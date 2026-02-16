@@ -1,0 +1,21 @@
+<div class="admin-container">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>✈ Admin Panel</h2>
+
+    <a routerLink="/admin/dashboard">Dashboard</a>
+    <a routerLink="/admin/flights">Manage Flights</a>
+    <a routerLink="/admin/airports">Manage Airports</a>
+    <a routerLink="/admin/bookings">Bookings</a>
+
+    <hr>
+   <a (click)="logout()" class="logout-btn">🚪 Logout</a>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

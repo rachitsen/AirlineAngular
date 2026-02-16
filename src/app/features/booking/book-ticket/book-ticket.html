@@ -1,0 +1,57 @@
+<div class="booking-wrapper">
+
+  <div class="booking-card">
+
+    <h1 class="page-title">✈ Confirm Your Flight</h1>
+
+    @if(flight()){
+    <div class="flight-summary">
+
+      <div class="flight-main">
+        <div>
+          <h2>{{flight()?.flightNumber}}</h2>
+          <span class="vendor">{{flight()?.vendorName}}</span>
+        </div>
+
+        <div class="route">
+          {{flight()?.departureAirportName}}
+          <span class="arrow">→</span>
+          {{flight()?.arrivalAirportName}}
+        </div>
+
+        <div class="price">
+          ₹ {{flight()?.price}}
+        </div>
+      </div>
+
+    </div>
+    }
+
+    <div class="divider"></div>
+
+    <h2 class="section-title">Passenger Details</h2>
+
+    @for(p of passengers(); track $index){
+    <div class="passenger-card">
+
+      <input placeholder="Full Name" [(ngModel)]="p.name">
+      <input placeholder="Contact Number" [(ngModel)]="p.contact">
+      <input placeholder="Aadhar Number" [(ngModel)]="p.aadhar">
+      <input placeholder="Seat No" type="number" [(ngModel)]="p.seatNo">
+
+      <button class="delete-btn" (click)="removePassenger($index)">✕</button>
+
+    </div>
+    }
+
+    <button class="add-btn" (click)="addPassenger()">+ Add Passenger</button>
+
+    <div class="divider"></div>
+
+    <button class="confirm-btn" (click)="confirmBooking()">
+      Confirm Booking ✈
+    </button>
+
+  </div>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="admin-page">
+
+<h2>✈ Airport Management</h2>
+
+<button routerLink="/admin">⬅ Back</button>
+
+<hr>
+
+<h3>Add Airport</h3>
+
+<div class="form-box">
+  <input placeholder="Airport Code" [(ngModel)]="newAirport.airportCode">
+  <input placeholder="Airport Name" [(ngModel)]="newAirport.airportName">
+  <input placeholder="City Id" type="number" [(ngModel)]="newAirport.cityId">
+  <button (click)="addAirport()">Add Airport</button>
+</div>
+
+<hr>
+
+<h3>All Airports</h3>
+
+<table border="1" width="100%">
+  <tr>
+    <th>ID</th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>City</th>
+    <th>Action</th>
+  </tr>
+
+  @for(a of airports(); track a.airportId){
+  <tr>
+    <td>{{a.airportId}}</td>
+    <td>{{a.airportCode}}</td>
+    <td>{{a.airportName}}</td>
+    <td>{{a.cityName}}</td>
+    <td>
+      <button (click)="deleteAirport(a.airportId)">Delete</button>
+    </td>
+  </tr>
+  }
+
+</table>
+
+</div>

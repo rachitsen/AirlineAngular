@@ -1,0 +1,55 @@
+<div class="mybooking-wrapper">
+
+  <div class="header">
+    <h1>🎫 My Bookings</h1>
+    <button class="back-btn" routerLink="/dashboard">← Back to Dashboard</button>
+  </div>
+
+  @if(bookings().length === 0){
+    <div class="empty">
+      <h3>No bookings found</h3>
+      <p>Looks like you haven't booked any flights yet ✈</p>
+    </div>
+  }
+
+  <div class="booking-grid">
+    @for(b of bookings(); track b.bookingId){
+      <div class="ticket-card">
+
+        <div class="ticket-top">
+          <div>
+            <h2>{{b.flightNumber}}</h2>
+            <span class="airline">{{b.vendorName || 'Airline'}}</span>
+          </div>
+
+          <div class="price">₹ {{b.price}}</div>
+        </div>
+
+        <div class="route">
+          {{b.departureAirportName}}
+          <span>→</span>
+          {{b.arrivalAirportName}}
+        </div>
+
+        <div class="ticket-info">
+          <div>
+            <label>Date</label>
+            <p>{{b.travelDate | date:'dd MMM yyyy'}}</p>
+          </div>
+
+          <div>
+            <label>Passenger</label>
+            <p>{{b.customerName}}</p>
+          </div>
+
+          <div>
+            <label>Booking ID</label>
+            <p>#{{b.bookingId}}</p>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+
+</div>

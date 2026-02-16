@@ -1,0 +1,148 @@
+/* background */
+.booking-wrapper{
+  min-height:100vh;
+  background:linear-gradient(180deg,#f6f8fc,#eef2f7);
+  padding:40px 20px;
+  display:flex;
+  justify-content:center;
+  font-family:'Segoe UI',sans-serif;
+}
+
+/* main card */
+.booking-card{
+  background:white;
+  width:1000px;
+  max-width:100%;
+  padding:35px 40px;
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.08);
+}
+
+/* title */
+.page-title{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:25px;
+  color:#111827;
+}
+
+/* flight summary */
+.flight-summary{
+  background:#f9fafb;
+  border-radius:14px;
+  padding:20px;
+}
+
+.flight-main{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.flight-main h2{
+  margin:0;
+  font-size:22px;
+}
+
+.vendor{
+  color:#6b7280;
+  font-size:13px;
+}
+
+.route{
+  font-size:15px;
+  color:#374151;
+  font-weight:500;
+}
+
+.arrow{
+  margin:0 8px;
+  font-weight:bold;
+}
+
+.price{
+  font-size:24px;
+  font-weight:bold;
+  color:#e11d2e;
+}
+
+/* divider */
+.divider{
+  height:1px;
+  background:#e5e7eb;
+  margin:28px 0;
+}
+
+/* section */
+.section-title{
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+/* passenger card */
+.passenger-card{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 120px 50px;
+  gap:12px;
+  margin-bottom:14px;
+  align-items:center;
+}
+
+/* inputs */
+.passenger-card input{
+  padding:12px 14px;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  font-size:14px;
+  outline:none;
+  background:#fafafa;
+}
+
+.passenger-card input:focus{
+  border-color:#e11d2e;
+  background:white;
+}
+
+/* delete btn */
+.delete-btn{
+  background:#fee2e2;
+  border:none;
+  padding:11px;
+  border-radius:10px;
+  color:#b91c1c;
+  cursor:pointer;
+  font-size:16px;
+}
+
+/* add btn */
+.add-btn{
+  margin-top:10px;
+  background:#eef2ff;
+  color:#4f46e5;
+  border:none;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* confirm */
+.confirm-btn{
+  width:100%;
+  margin-top:20px;
+  padding:18px;
+  font-size:18px;
+  font-weight:bold;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(90deg,#e11d2e,#b91c1c);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.confirm-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 30px rgba(225,29,46,0.3);
+}

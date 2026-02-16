@@ -1,0 +1,104 @@
+<div class="dashboard-wrapper">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="logo">✈ SkyBook</div>
+
+    <div class="top-actions">
+      <span class="welcome">Hi, {{user()?.name}}</span>
+      <button routerLink="/my-bookings" class="ghost-btn">My Bookings</button>
+      <button (click)="logout()" class="logout-btn">Logout</button>
+    </div>
+  </div>
+
+  <!-- HERO SEARCH SECTION -->
+  <div class="hero">
+
+    <h1>Find Your Perfect Flight</h1>
+    <p>Book domestic & international flights at best prices</p>
+
+    <div class="search-card">
+
+      <div class="field">
+        <label>From</label>
+        <select [(ngModel)]="fromAirport">
+          <option value="0">Select departure</option>
+          @for(a of airports(); track a.airportId){
+            <option [value]="a.airportId">
+              {{a.cityName}} - {{a.airportName}}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="field">
+        <label>To</label>
+        <select [(ngModel)]="toAirport">
+          <option value="0">Select destination</option>
+          @for(a of airports(); track a.airportId){
+            <option [value]="a.airportId">
+              {{a.cityName}} - {{a.airportName}}
+            </option>
+          }
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Date</label>
+        <input type="date" [(ngModel)]="travelDate">
+      </div>
+
+      <div class="search-btn-box">
+        <button (click)="searchFlights()">Search Flights</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results">
+
+    <h2>Available Flights</h2>
+
+    @if(flights().length === 0){
+      <div class="empty">
+        <p>No flights found. Try different route ✈</p>
+      </div>
+    }
+
+    <div class="flight-grid">
+
+      @for(f of flights(); track f.flightId){
+        <div class="flight-card">
+
+          <div class="flight-top">
+            <div>
+              <h3>{{f.flightNumber}}</h3>
+              <span class="vendor">{{f.vendorName}}</span>
+            </div>
+
+            <div class="price">₹ {{f.price}}</div>
+          </div>
+
+          <div class="route">
+            {{f.departureAirportName}}
+            <span>→</span>
+            {{f.arrivalAirportName}}
+          </div>
+
+          <div class="time">
+            🕒 {{f.departureTime}} → {{f.arrivalTime}}
+          </div>
+
+          <div class="bottom">
+            <span>Seats left: {{f.totalSeats}}</span>
+            <button (click)="bookFlight(f.flightId)">Book Now</button>
+          </div>
+
+        </div>
+      }
+
+    </div>
+  </div>
+
+</div>
