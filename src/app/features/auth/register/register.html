@@ -1,0 +1,33 @@
+<div class="register-page">
+
+  <div class="register-card">
+
+    <h2>Create Account ✈</h2>
+
+    <form [formGroup]="form" (ngSubmit)="register()">
+
+      <input placeholder="Full Name" formControlName="name">
+      <input placeholder="Mobile" formControlName="mobileNo">
+      <input placeholder="Email" formControlName="email">
+      <input placeholder="City" formControlName="city">
+      <input placeholder="Address" formControlName="address">
+      <input type="password" placeholder="Password" formControlName="password">
+
+      <button type="submit" [disabled]="loading">
+        {{loading ? 'Creating...' : 'Register'}}
+      </button>
+
+      @if(msg){
+        <div class="msg">{{msg}}</div>
+      }
+
+      <p class="login-link">
+        Already have account?
+        <a routerLink="/login">Login</a>
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
