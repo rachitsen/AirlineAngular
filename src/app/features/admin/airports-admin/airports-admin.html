@@ -1,45 +1,63 @@
-<div class="admin-page">
+<div class="airport-page">
 
-<h2>✈ Airport Management</h2>
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h1>Airport Management</h1>
+      <p>Manage airports and destinations</p>
+    </div>
 
-<button routerLink="/admin">⬅ Back</button>
+  </div>
 
-<hr>
+  <!-- ADD AIRPORT CARD -->
+  <div class="card form-card">
+    <h2>Add New Airport</h2>
 
-<h3>Add Airport</h3>
+    <div class="form-grid">
+      <input placeholder="Airport Code" [(ngModel)]="newAirport.airportCode">
+      <input placeholder="Airport Name" [(ngModel)]="newAirport.airportName">
+      <input placeholder="City Id" type="number" [(ngModel)]="newAirport.cityId">
+    </div>
 
-<div class="form-box">
-  <input placeholder="Airport Code" [(ngModel)]="newAirport.airportCode">
-  <input placeholder="Airport Name" [(ngModel)]="newAirport.airportName">
-  <input placeholder="City Id" type="number" [(ngModel)]="newAirport.cityId">
-  <button (click)="addAirport()">Add Airport</button>
-</div>
+    <button class="primary-btn" (click)="addAirport()">Add Airport</button>
+  </div>
 
-<hr>
+  <!-- LIST CARD -->
+  <div class="card table-card">
+    <h2>All Airports</h2>
 
-<h3>All Airports</h3>
+    @if(airports().length === 0){
+      <p class="empty">No airports found</p>
+    }
 
-<table border="1" width="100%">
-  <tr>
-    <th>ID</th>
-    <th>Code</th>
-    <th>Name</th>
-    <th>City</th>
-    <th>Action</th>
-  </tr>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Code</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Action</th>
+        </tr>
+      </thead>
 
-  @for(a of airports(); track a.airportId){
-  <tr>
-    <td>{{a.airportId}}</td>
-    <td>{{a.airportCode}}</td>
-    <td>{{a.airportName}}</td>
-    <td>{{a.cityName}}</td>
-    <td>
-      <button (click)="deleteAirport(a.airportId)">Delete</button>
-    </td>
-  </tr>
-  }
+      <tbody>
+        @for(a of airports(); track a.airportId){
+        <tr>
+          <td>{{a.airportId}}</td>
+          <td><span class="tag">{{a.airportCode}}</span></td>
+          <td>{{a.airportName}}</td>
+          <td>{{a.cityName}}</td>
+          <td>
+            <button class="delete-btn" (click)="deleteAirport(a.airportId)">
+              Delete
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
 
-</table>
+  </div>
 
 </div>

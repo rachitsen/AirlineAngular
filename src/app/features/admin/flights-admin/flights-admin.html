@@ -1,66 +1,109 @@
-<div class="admin-page">
+<div class="flight-admin-page">
 
-<h2>🛫 Admin Flight Panel</h2>
+  <!-- HEADER -->
+  <div class="page-header">
+    <div>
+      <h1>Flight Management</h1>
+      <p>Create and manage airline flights</p>
+    </div>
+  </div>
 
-<hr>
+  <!-- ADD FLIGHT CARD -->
+  <div class="card form-card">
+    <h2>Add New Flight</h2>
 
-<h3>Add Flight</h3>
+    <div class="form-grid">
 
-<div class="form">
+      <input placeholder="Flight Number"
+             [(ngModel)]="newFlight.flightNumber">
 
-<input placeholder="Flight Number"
-[(ngModel)]="newFlight.flightNumber">
+      <!-- FROM -->
+      <select [(ngModel)]="newFlight.departureAirportId">
+        <option value="0">From Airport</option>
+        @for(a of airports(); track a.airportId){
+          <option [value]="a.airportId">{{a.airportName}}</option>
+        }
+      </select>
 
-<select [(ngModel)]="newFlight.departureAirportId">
-<option value="0">From Airport</option>
-@for(a of airports(); track a.airportId){
-<option [value]="a.airportId">{{a.airportName}}</option>
-}
-</select>
+      <!-- TO -->
+      <select [(ngModel)]="newFlight.arrivalAirportId">
+        <option value="0">To Airport</option>
+        @for(a of airports(); track a.airportId){
+          <option [value]="a.airportId">{{a.airportName}}</option>
+        }
+      </select>
 
-<select [(ngModel)]="newFlight.arrivalAirportId">
-<option value="0">To Airport</option>
-@for(a of airports(); track a.airportId){
-<option [value]="a.airportId">{{a.airportName}}</option>
-}
-</select>
+      <!-- VENDOR -->
+      <select [(ngModel)]="newFlight.flightVendorId">
+        <option value="0">Select Airline Vendor</option>
+        @for(v of vendors(); track v.vendorId){
+          <option [value]="v.vendorId">{{v.vendorName}}</option>
+        }
+      </select>
 
-<select [(ngModel)]="newFlight.flightVendorId">
-<option value="0">Select Vendor</option>
-@for(v of vendors(); track v.vendorId){
-<option [value]="v.vendorId">{{v.vendorName}}</option>
-}
-</select>
+      <input type="number" placeholder="Ticket Price"
+             [(ngModel)]="newFlight.price">
 
-<input type="number" placeholder="Price" [(ngModel)]="newFlight.price">
-<input type="number" placeholder="Total Seats" [(ngModel)]="newFlight.totalSeats">
+      <input type="number" placeholder="Total Seats"
+             [(ngModel)]="newFlight.totalSeats">
 
-<input type="time" [(ngModel)]="newFlight.departureTime">
-<input type="time" [(ngModel)]="newFlight.arrivalTime">
+      <div class="time-group">
+        <label>Departure</label>
+        <input type="time" [(ngModel)]="newFlight.departureTime">
+      </div>
 
-<input type="date" [(ngModel)]="newFlight.travelDate">
+      <div class="time-group">
+        <label>Arrival</label>
+        <input type="time" [(ngModel)]="newFlight.arrivalTime">
+      </div>
 
-<button (click)="addFlight()">Add Flight</button>
+      <div class="date-group">
+        <label>Travel Date</label>
+        <input type="date" [(ngModel)]="newFlight.travelDate">
+      </div>
 
-</div>
+    </div>
 
-<hr>
+    <button class="primary-btn" (click)="addFlight()">+ Add Flight</button>
+  </div>
 
-<h3>All Flights</h3>
+  <!-- ALL FLIGHTS -->
+  <div class="card table-card">
+    <h2>All Flights</h2>
 
-@for(f of flights(); track f.flightId){
-<div class="flight-card">
+    @if(flights().length === 0){
+      <p class="empty">No flights available</p>
+    }
 
-<b>{{f.flightNumber}}</b>
+    <div class="flight-grid">
 
-<p>{{f.departureAirportName}} → {{f.arrivalAirportName}}</p>
+      @for(f of flights(); track f.flightId){
+      <div class="flight-card">
 
-<p>₹ {{f.price}}</p>
-<p>Seats: {{f.totalSeats}}</p>
-<p>Date: {{f.travelDate | date:'dd MMM yyyy'}}</p>
+        <div class="flight-top">
+          <h3>{{f.flightNumber}}</h3>
+          <span class="price">₹ {{f.price}}</span>
+        </div>
 
-<button (click)="deleteFlight(f.flightId)">Delete</button>
+        <p class="route">
+          {{f.departureAirportName}}
+          <span>→</span>
+          {{f.arrivalAirportName}}
+        </p>
 
-</div>
-}
+        <div class="meta">
+          <span>🪑 {{f.totalSeats}} seats</span>
+          <span>📅 {{f.travelDate | date:'dd MMM yyyy'}}</span>
+        </div>
+
+        <button class="delete-btn" (click)="deleteFlight(f.flightId)">
+          Delete Flight
+        </button>
+
+      </div>
+      }
+
+    </div>
+  </div>
+
 </div>

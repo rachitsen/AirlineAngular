@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { Login } from './features/auth/login/login';
 import { Dashboard } from './shared/components/dashboard/dashboard';
 import { adminGuard } from './core/gaurds/admin-guard';
+import { UserLayout } from './shared/components/user-layout/user-layout';
+import { UserGuard } from './core/gaurds/user-gaurds';
 export const routes: Routes = [
     {
         path: '',
@@ -12,20 +14,35 @@ export const routes: Routes = [
         component: Login
     },
     {
-        path: 'dashboard',
-        component: Dashboard
-    },
+ path:'register',
+ loadComponent:()=>import('./features/auth/register/register')
+ .then(m=>m.Register)
+},
     {
-        path: 'book/:id',
-        loadComponent: () =>
-        import('./features/booking/book-ticket/book-ticket').then(m => m.BookTicket )
-    },
+  path: '',
+  component: UserLayout,
+  canActivate: [UserGuard],
+  children: [
+
+    { path: 'dashboard', component: Dashboard },
+
     {
-    path: 'my-bookings',
-        loadComponent: () =>
-            import('./features/booking/my-booking/my-booking')
-            .then(m => m.MyBooking)
+      path: 'book/:id',
+      loadComponent: () =>
+        import('./features/booking/book-ticket/book-ticket')
+        .then(m => m.BookTicket)
     },
+
+    {
+      path: 'my-bookings',
+      loadComponent: () =>
+        import('./features/booking/my-booking/my-booking')
+        .then(m => m.MyBooking)
+    }
+
+  ]
+},
+
 {
  path:'admin',
     canActivate: [adminGuard],

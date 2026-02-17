@@ -1,19 +1,20 @@
-<div class="admin-container">
+<div class="admin-layout">
 
   <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>✈ Admin Panel</h2>
+  <aside class="sidebar">
+    <div class="logo">✈ Tata Airline Admin</div>
 
-    <a routerLink="/admin/dashboard">Dashboard</a>
-    <a routerLink="/admin/flights">Manage Flights</a>
-    <a routerLink="/admin/airports">Manage Airports</a>
-    <a routerLink="/admin/bookings">Bookings</a>
+    <nav>
+      <a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/admin/flights" routerLinkActive="active">Flights</a>
+      <a routerLink="/admin/airports" routerLinkActive="active">Airports</a>
+      <a routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
+    </nav>
 
-    <hr>
-   <a (click)="logout()" class="logout-btn">🚪 Logout</a>
-  </div>
+    <button class="logout-btn" (click)="logout()">Logout</button>
+  </aside>
 
-  <!-- CONTENT -->
+  <!-- RIGHT CONTENT -->
   <div class="content">
     <router-outlet></router-outlet>
   </div>

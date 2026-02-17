@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './navbar.html',
-  styleUrl: './navbar.css',
+  styleUrl: './navbar.css'
 })
 export class Navbar {
 
+  router = new Router();
+
+  user = signal<any>(JSON.parse(localStorage.getItem('user') || '{}'));
+
+  logout(){
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('/login');
+  }
 }

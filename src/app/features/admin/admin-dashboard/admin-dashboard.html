@@ -1,81 +1,49 @@
-<div class="admin-shell">
+<div class="admin-dashboard">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="brand">✈ SkyJet Admin</div>
+  <h1>Flight Dashboard</h1>
+  <p class="subtitle">Airline Management Overview</p>
 
-    <nav>
-      <a routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/admin/flights" routerLinkActive="active">Flights</a>
-      <a routerLink="/admin/airports" routerLinkActive="active">Airports</a>
-      <a routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
-      <a routerLink="/admin/customers" routerLinkActive="active">Customers</a>
-    </nav>
+  <!-- STATS -->
+  <div class="stats">
 
-    <div class="sidebar-bottom">
-      <button class="logout-btn" (click)="logout()">Logout</button>
+    <div class="card">
+      <p>Total Flights</p>
+      <h2>{{totalFlights()}}</h2>
+      <span>🛫</span>
     </div>
-  </aside>
 
-  <!-- MAIN -->
-  <main class="main">
+    <div class="card">
+      <p>Total Bookings</p>
+      <h2>{{totalBookings()}}</h2>
+      <span>🎫</span>
+    </div>
 
-    <!-- TOP HEADER -->
-    <header class="topbar">
-      <div>
-        <h1>Admin Dashboard</h1>
-        <span>Airline Management System</span>
-      </div>
-    </header>
+    <div class="card">
+      <p>Total Users</p>
+      <h2>{{totalUsers()}}</h2>
+      <span>👥</span>
+    </div>
 
-    <!-- STATS -->
-    <section class="stats">
+  </div>
 
-      <div class="stat-card">
-        <div>
-          <p>Total Flights</p>
-          <h2>{{totalFlights()}}</h2>
+  <!-- BOOKINGS PER FLIGHT -->
+  <div class="panel">
+    <h2>Bookings Per Flight</h2>
+
+    @for(b of bookingsPerFlight(); track b.flight){
+      <div class="row">
+
+        <div class="flight">✈ {{b.flight}}</div>
+
+        <div class="progress">
+          <div class="bar" [style.width.%]="b.count * 10"></div>
         </div>
-        <span>🛫</span>
+
+        <div class="count">{{b.count}}</div>
+
       </div>
+    }
 
-      <div class="stat-card">
-        <div>
-          <p>Total Bookings</p>
-          <h2>{{totalBookings()}}</h2>
-        </div>
-        <span>🎫</span>
-      </div>
+  </div>
 
-      <div class="stat-card">
-        <div>
-          <p>Total Users</p>
-          <h2>{{totalUsers()}}</h2>
-        </div>
-        <span>👥</span>
-      </div>
-
-    </section>
-
-    <!-- BOOKINGS PER FLIGHT -->
-    <section class="panel">
-      <h2>Bookings Per Flight</h2>
-
-      @for(b of bookingsPerFlight(); track b.flight){
-        <div class="flight-row">
-
-          <div class="flight-name">✈ {{b.flight}}</div>
-
-          <div class="progress">
-            <div class="bar" [style.width.%]="b.count * 10"></div>
-          </div>
-
-          <div class="count">{{b.count}}</div>
-
-        </div>
-      }
-
-    </section>
-
-  </main>
 </div>

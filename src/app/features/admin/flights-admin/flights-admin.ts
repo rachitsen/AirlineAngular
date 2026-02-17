@@ -24,8 +24,8 @@ export class FlightsAdmin {
     arrivalAirportId:0,
     departureTime:'',
     arrivalTime:'',
-    price:0,
-    totalSeats:0,
+    price:'',
+    totalSeats:'',
     flightVendorId:0,
     travelDate:''
   };
@@ -78,8 +78,8 @@ export class FlightsAdmin {
           arrivalAirportId:0,
           departureTime:'',
           arrivalTime:'',
-          price:0,
-          totalSeats:0,
+          price:'',
+          totalSeats:'',
           flightVendorId:0,
           travelDate:''
         };

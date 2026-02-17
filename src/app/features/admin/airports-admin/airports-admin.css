@@ -1,0 +1,133 @@
+.airport-page{
+  padding:10px;
+  font-family:Segoe UI, sans-serif;
+}
+
+/* HEADER */
+.page-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.page-header h1{
+  font-size:26px;
+  margin-bottom:4px;
+}
+
+.page-header p{
+  color:gray;
+  font-size:14px;
+}
+
+.back-btn{
+  background:#e5e7eb;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.back-btn:hover{
+  background:#d1d5db;
+}
+
+/* CARD */
+.card{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  margin-bottom:25px;
+}
+
+/* FORM */
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.form-grid input{
+  padding:12px;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.form-grid input:focus{
+  outline:none;
+  border:1px solid #3b82f6;
+}
+
+/* BUTTON */
+.primary-btn{
+  background:linear-gradient(90deg,#2563eb,#4f46e5);
+  border:none;
+  color:white;
+  padding:12px 18px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.primary-btn:hover{
+  opacity:.9;
+}
+
+/* TABLE */
+.table-card table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:10px;
+}
+
+th{
+  text-align:left;
+  padding:12px;
+  background:#f1f5f9;
+  font-size:14px;
+}
+
+td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+}
+
+tr:hover{
+  background:#f9fafb;
+}
+
+/* TAG */
+.tag{
+  background:#e0f2fe;
+  color:#0369a1;
+  padding:5px 10px;
+  border-radius:6px;
+  font-weight:600;
+  font-size:12px;
+}
+
+/* DELETE */
+.delete-btn{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.delete-btn:hover{
+  background:#dc2626;
+}
+
+/* EMPTY */
+.empty{
+  color:gray;
+  padding:20px 0;
+}

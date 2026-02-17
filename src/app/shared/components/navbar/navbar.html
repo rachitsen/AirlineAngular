@@ -1,1 +1,25 @@
-<p>navbar works!</p>
+<header class="navbar">
+
+  <!-- LOGO -->
+  <div class="logo">
+    ✈ Tata Airline
+  </div>
+
+  <!-- MENU -->
+  <nav class="nav-links">
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+    <a routerLink="/my-bookings" routerLinkActive="active">My Bookings</a>
+  </nav>
+
+  <!-- RIGHT SIDE -->
+  <div class="right-section">
+
+    @if(user()){
+      <span class="user">👤 {{user()?.name || user()?.fullName}}</span>
+    }
+
+    <button class="logout" (click)="logout()">Logout</button>
+
+  </div>
+
+</header>
